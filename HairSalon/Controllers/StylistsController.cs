@@ -13,7 +13,7 @@ namespace HairSalon.Controllers
 
 		public StylistsController(HairSalonContext db)
 		{
-			_db = db
+			_db = db;
 		}
 
 		public ActionResult Index()
@@ -38,7 +38,7 @@ namespace HairSalon.Controllers
 
 		public ActionResult Details(int id)
 		{
-			Stylist stylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id).Include(stylist => stylist.Clients);
+			Stylist stylist = _db.Stylists.Include(stylist => stylist.Clients).FirstOrDefault(stylist => stylist.StylistId == id);
 			return View(stylist);
 		}
 	}

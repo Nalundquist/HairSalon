@@ -6,7 +6,7 @@ namespace HairSalon.Models
 	{
 		public Stylist()
 		{
-			this.Clients = new.HashSet<Client>();
+			this.Clients = new HashSet<Client>();
 		}
 		public int StylistId { get; set; }
 		public string Name { get; set; }
