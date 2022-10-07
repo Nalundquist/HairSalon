@@ -22,12 +22,18 @@ namespace HairSalon.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Create(Client client, )
+		public ActionResult Create(Client client)
 		{
 			_db.Clients.Add(client);
 			_db.SaveChanges();
 			ViewBag.ConfirmMessage = "Your changes have been saved";
 			return RedirectToAction("Index", "Home");
+		}
+
+		public ActionResult Details(int id)
+		{
+			Client client = _db.Clients.FirstOrDefault(client => client.ClientId == id).Include(client => client.Stylist);
+			return View(client);
 		}
 	}
 }

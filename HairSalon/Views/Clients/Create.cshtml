@@ -1,0 +1,19 @@
+@{
+	Layout = "_Layout"
+}
+
+@using HairSalon.Models;
+@model HairSalon.Models.Client;
+
+<h3>Add new client to @Model.Name's Itinerary</h3>
+
+@using (Html.BeginForm())
+{
+	@Html.HiddenFor(model => model.StylistId = Model.StylistId)
+	@Html.LabelFor(model => model.Name)
+	@Html.TextBoxFor(model => model.Name)
+	@Html.LabelFor(model => model.HairType)
+	@Html.TextBoxFor(model => model.HairType)
+	<input type="submit" value="Create client">
+}
+
