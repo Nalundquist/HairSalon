@@ -22,10 +22,9 @@ namespace HairSalon.Controllers
 			return View(model);
 		}
 
-		public ActionResult Create(int id)
+		public ActionResult Create()
 		{
-			Stylist stylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-			return View(stylist);
+			return View();
 		}
 
 		[HttpPost]
@@ -38,8 +37,8 @@ namespace HairSalon.Controllers
 
 		public ActionResult Details(int id)
 		{
-			Stylist stylist = _db.Stylists.Include(stylist => stylist.Clients).FirstOrDefault(stylist => stylist.StylistId == id);
-			return View(stylist);
+			Stylist thisStylist = _db.Stylists.Include(stylist => stylist.Clients).FirstOrDefault(stylist => stylist.StylistId == id);
+			return View(thisStylist);
 		}
 	}
 }
