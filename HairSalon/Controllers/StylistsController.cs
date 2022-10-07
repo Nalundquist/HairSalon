@@ -22,10 +22,9 @@ namespace HairSalon.Controllers
 			return View(model);
 		}
 
-		public ActionResult Create(int id)
+		public ActionResult Create()
 		{
-			Stylist stylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-			return View(stylist);
+			return View();
 		}
 
 		[HttpPost]

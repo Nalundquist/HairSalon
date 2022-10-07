@@ -7,3 +7,4 @@
 <h3>Details on @Model.Name</h3>
 
 <p>Hairtype: @Model.HairType</p>
+<p>Styled by @Html.ActionLink($"{Model.Stylist.Name}", "Details", "Stylists", new {id = Model.Stylist.StylistId})</p>
