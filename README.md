@@ -35,6 +35,8 @@ A web interface for administrative tracking of stylists and clients at the Eau C
 
 		>git clone https://github.com/nalundquist/HairSalon
 
+
+
 * Enter the cloned project folder "HairSalon/HairSalon" and type:
 
 		>dotnet restore
@@ -43,15 +45,31 @@ followed by
 
 		>dotnet build
 
-and finally
+* Next, download [MySQL Community Server](https://dev.mysql.com/downloads/mysql/) and [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) and install/configure them.
+
+* After this, go into MySQL Workbench and click "Data Import/Restore"
+
+* Select the "Import from Self-Contained File" option in the tab that appears
+
+* In the field next to this, type "[directory repo was cloned into]/HairSalon/noah_lundquist.sql".  Note that the specified file is in the bottom-most root folder and not HairSalon/HairSalon.
+
+*After this, create an appsettings.json file in the root HairSalon/ folder (sub in your own set username and password for the bracketed bits)
+
+		{
+  		"ConnectionStrings": {
+      	"DefaultConnection": "Server=localhost;Port=3306;database=bestrestaurants;uid=[USERNAME];pwd=[PASSWORD];"
+  		}
+		}
+
+* Finally, navigate to HairSalon/HairSalon in git bash (if you navigated away) and type  
 
 		>dotnet run
 
-Follwing this you can navigate to http://localhost:5000 in the browser of your choice to navigate around the vendor/order interface.  
+Follwing this you can navigate to http://localhost:5000 in the browser of your choice to navigate around the interface.  
 
 ## Known Bugs
 
-None at this point.
+Search functionality is WIP; any query will return an accurate length of the amount of results in the URL (implying the query goes fine) while the results page itself will display nothing.  Will work on it :).
 
 ## License
 
