@@ -8,4 +8,17 @@
 <p>Years in the industry: @Model.YearsExperience</p>
 <p>@Model.Description</p>
 
+@if (Model.Clients.Count == 0 )
+{
+	<p>This stylist has no logged clients.</p>
+}
+
+<ul>
+@foreach (Client client in Model.Clients)
+{
+	<li>@Html.ActionLink($"{client.Name}", "Details", "Clients", new {id = client.ClientId})</li>
+}
+</ul>
+
+<p>@Html.ActionLink("Add new client", "Create", "Clients")</p>
 <p>@Html.ActionLink("Add new stylist", "Create")</p>
