@@ -32,7 +32,6 @@ namespace HairSalon.Controllers
 		{
 			_db.Clients.Add(client);
 			_db.SaveChanges();
-			ViewBag.ConfirmMessage = "Your changes have been saved";
 			return RedirectToAction("Index");
 		}
 
