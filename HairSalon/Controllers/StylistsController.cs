@@ -40,5 +40,21 @@ namespace HairSalon.Controllers
 			Stylist stylist = _db.Stylists.Include(stylist => stylist.Clients).FirstOrDefault(stylist => stylist.StylistId == id);
 			return View(stylist);
 		}
+
+		public ActionResult Search()
+		{
+			return View();
+		}
+
+		public ActionResult NameResults(string name)
+		{
+			List<Stylist> model = _db.Stylists.Where(stylist => stylist.Name.Contains(name)).ToList();
+			return RedirectToAction("Results", model);
+		}
+
+		public ActionResult Results(List<Stylist> model)
+		{
+			return View(model);
+		}
 	}
 }

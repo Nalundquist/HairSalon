@@ -1,0 +1,13 @@
+@{
+	Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+
+<h3>Search for a Stylist</h3>
+@using (Html.BeginForm("NameResults", "Stylists", FormMethod.Get))
+{
+	<p>Search by Name</p>
+	<input type="text" name="name" id="name">
+	<input type="submit" value="Search" button="btn btn-default">
+}
