@@ -14,17 +14,11 @@ namespace HairSalon.Controllers
 		{
 			_db = db;
 		}
-		
-		public ActionResult Index()
-		{
-			List<Client> model = _db.Clients.ToList();
-			return View(model);
-		}
 
 		public ActionResult Create()
 		{
-			ViewBag.Stylist = new SelectList(_db.Stylists, "StylistId", "Name");
-			return View();
+			ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
+			Return View();
 		}
 
 		[HttpPost]
@@ -33,13 +27,9 @@ namespace HairSalon.Controllers
 			_db.Clients.Add(client);
 			_db.SaveChanges();
 			ViewBag.ConfirmMessage = "Your changes have been saved";
-			return RedirectToAction("Index");
+			return RedirectToAction("Index", "Home");
 		}
 
-		public ActionResult Details(int id)
-		{
-			Client client = _db.Clients.FirstOrDefault(client => client.ClientId == id);
-			return View(client);
-		}
+		public ActionResult Details
 	}
 }
