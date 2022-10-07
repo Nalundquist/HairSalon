@@ -15,10 +15,10 @@ namespace HairSalon.Controllers
 			_db = db;
 		}
 
-		public ActionResult Create()
+		public ActionResult Create(int id)
 		{
 			ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
-			Return View();
+			return View();
 		}
 
 		[HttpPost]
@@ -30,6 +30,10 @@ namespace HairSalon.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
-		public ActionResult Details
+		public ActionResult Details(int id)
+		{
+			Client model = _db.Clients.Include(client => client.Stylist).FirstOrDefault(client => client.ClientId == id);
+			return View(model);
+		}
 	}
 }
